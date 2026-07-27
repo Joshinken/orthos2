@@ -19,7 +19,7 @@ services:
     security_opt:
       - label:disable
   orthos2:
-    image: registry.opensuse.org/systemsmanagement/orthos2/containers/orthos2:1.13
+    image: registry.opensuse.org/systemsmanagement/orthos2/containers/orthos2:1.16
     secrets:
       - NetboxToken
       - OrthosKey
@@ -44,7 +44,7 @@ services:
       - "traefik.http.routers.orthos2-https.tls=true"
       - "traefik.http.services.orthos2.loadbalancer.server.port=8000"
   orthos2_taskmanager:
-    image: registry.opensuse.org/systemsmanagement/orthos2/containers/orthos2:1.13
+    image: registry.opensuse.org/systemsmanagement/orthos2/containers/orthos2:1.16
     secrets:
       - NetboxToken
       - OrthosKey
@@ -59,7 +59,7 @@ services:
       orthos2:
         condition: service_healthy
   orthos2_nginx:
-    image: registry.opensuse.org/systemsmanagement/orthos2/containers/orthos2-static:1.13
+    image: registry.opensuse.org/systemsmanagement/orthos2/containers/orthos2-static:1.16
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nginx-static.rule=Host(`${FQDN:?error}`) && PathPrefix(`/static/`)"
